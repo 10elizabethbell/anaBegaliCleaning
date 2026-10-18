@@ -41,33 +41,37 @@ h1,h2,h3{margin:0;line-height:1.02;text-wrap:balance}
 h2{font-size:clamp(2rem,8vw,3.4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 16px}
 @media (min-width:700px){.wrap{padding:0 32px}}
+.wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+@media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left));padding-right:max(32px,env(safe-area-inset-right))}}
 
 /* ---------- header ---------- */
 .top{background:var(--hero)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:6px}
 .brand{text-decoration:none;line-height:1.05}
 .brand b{display:block;font-size:1.3rem;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
-.brand span{display:block;font-size:.8rem;font-weight:600;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
-.tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;font-weight:800;font-size:1rem;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.brand span{white-space:nowrap;display:block;font-size:.8125rem;font-weight:600;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
+.tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;font-weight:800;font-size:1.0625rem;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
 .tel svg{width:18px;height:18px;flex:none;color:var(--green)}
 .tel:hover{color:var(--green)}
+
+@media (max-width:374px){.brand span{letter-spacing:.02em}.tel{gap:6px;padding:0}}
 
 /* ---------- hero ---------- */
 .hero{background:var(--hero);padding:18px 0 0}
 .hero .wrap{display:grid;gap:22px}
 .hero h1{font-size:clamp(2.75rem,12.5vw,6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.035em;line-height:.92}
-.promise{text-wrap:pretty;margin:14px 0 0;font-size:clamp(1.05rem,4.6vw,1.25rem);line-height:1.4;color:var(--ink-soft);max-width:30ch}
+.promise{text-wrap:pretty;margin:14px 0 0;font-size:1.25rem;line-height:1.4;color:var(--ink-soft);max-width:30ch}
 .actions{display:grid;gap:10px;margin-top:20px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 24px;border-radius:999px;border:2px solid var(--green);font:800 1.05rem/1 var(--font);text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:active{transform:scale(.98)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 24px;border-radius:999px;border:2px solid var(--green);font:800 1.0625rem/1 var(--font);text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .1s}
 .btn.fill{background:var(--green);color:#fff}
-.btn.fill:hover{background:var(--green-hi);border-color:var(--green-hi)}
 .btn.line{background:transparent;color:var(--green)}
-.btn.line:hover{background:var(--green);color:#fff}
+@media (hover:hover){.btn.fill:hover{background:var(--green-hi);border-color:var(--green-hi)}.btn.line:hover{background:var(--green);color:#fff}}
 .btn svg{width:20px;height:20px;flex:none}
 
 /* the window */
 .window{position:relative;height:clamp(230px,62vw,300px);border-radius:10px;background:#fbfcfa;padding:10px;
-  box-shadow:0 1px 0 #fff inset,0 18px 40px -18px rgba(16,48,42,.45),0 4px 10px -4px rgba(16,48,42,.2)}
+  box-shadow:0 18px 40px -18px rgba(16,48,42,.45),0 4px 10px -4px rgba(16,48,42,.2)}
 .glass{position:relative;width:100%;height:100%;border-radius:4px;overflow:hidden;background:linear-gradient(#cfe6f3,#f6efdc)}
 .glass canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 #view{filter:saturate(1.05)}
@@ -77,17 +81,25 @@ h2{font-size:clamp(2rem,8vw,3.4rem);font-weight:900;text-transform:uppercase;let
 .mullion::before{left:calc(50% - 5px);top:0;bottom:0;width:10px}
 .mullion::after{top:calc(50% - 5px);left:0;right:0;height:10px}
 .sill{position:absolute;left:-10px;right:-10px;bottom:-12px;height:14px;border-radius:4px;background:#f1f4f0;box-shadow:0 8px 16px -8px rgba(16,48,42,.4)}
-.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);padding:6px 12px;border-radius:999px;background:rgba(16,48,42,.72);color:#fff;font-size:.82rem;font-weight:700;pointer-events:none;white-space:nowrap;transition:opacity .5s}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);padding:6px 12px;border-radius:6px;background:rgba(16,48,42,.72);color:#fff;font-size:.8125rem;font-weight:700;pointer-events:none;white-space:nowrap;transition:opacity .5s}
 .hint.gone{opacity:0}
 
 @media (min-width:1000px){
   .hero{padding-top:40px}
-  .hero .wrap{grid-template-columns:1fr 1.05fr;align-items:center;gap:56px}
+  .hero h1{font-size:clamp(4rem,6vw,5.25rem)}
+  .hero .wrap{grid-template-columns:1.1fr 1fr;align-items:center;gap:56px}
   .actions{grid-template-columns:auto auto;justify-content:start}
   .window{height:min(560px,64vh);padding:14px}
   .mullion{inset:14px}
   .mullion::before{left:calc(50% - 7px);width:14px}
   .mullion::after{top:calc(50% - 7px);height:14px}
+}
+
+@media (min-width:700px) and (max-width:999px){.window{height:clamp(300px,45vw,420px)}}
+@media (orientation:landscape) and (max-height:500px) and (max-width:999px){
+  .hero h1{font-size:clamp(2.5rem,9vh,4rem)}
+  .hero .wrap{grid-template-columns:1fr 1fr;align-items:center}
+  .window{height:70vh}
 }
 
 /* ---------- wave seam ---------- */
@@ -103,25 +115,28 @@ section{padding:40px 0 48px}
 .services{background:var(--ground);padding-top:24px}
 .services h2{margin-bottom:18px}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-size:1.2rem;font-weight:800;letter-spacing:-.01em}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-size:1.375rem;font-weight:800;letter-spacing:-.01em}
 .row:hover,.row:focus-visible{outline:none;background:none;box-shadow:none}
 .arrow{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#e3eee8;color:var(--ink);transition:background .2s,color .2s}
 .arrow svg{width:18px;height:18px}
-.row:hover .arrow,.row:focus-visible .arrow{background:var(--green);color:#fff}
+@media (hover:hover){.row:hover .arrow{background:var(--green);color:#fff}}
+.row:focus-visible .arrow,.row:active .arrow{background:var(--green);color:#fff}
 .row:focus-visible .arrow{outline:3px solid var(--green);outline-offset:3px}
 @media (min-width:1000px){
-  .services .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
-  .rows{columns:1}
+  .services .wrap{display:block}
+  .services h2{margin-bottom:28px}
+  .rows{columns:2;column-gap:56px;border-top:0}
+  .rows li{break-inside:avoid}
+  .rows li:nth-child(1) .row,.rows li:nth-child(5) .row{border-top:1px solid var(--line)}
   .row{font-size:1.4rem;min-height:72px}
 }
 
 /* ---------- promise ---------- */
 .care{background:var(--ground);padding-top:8px}
-.care h2{max-width:14ch}
-.care .lead{margin:16px 0 0;font-size:1.15rem;color:var(--ink-soft);max-width:36ch}
+.care h2{max-width:12ch}
+.care .lead{margin:16px 0 0;font-size:1.25rem;color:var(--ink-soft);max-width:36ch}
 .vows{display:grid;gap:26px;margin:32px 0 0;padding:0;list-style:none}
-.vows h3{font-size:1.25rem;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-.vows h3 svg{width:26px;height:26px;color:var(--green);flex:none}
+.vows h3{font-size:1.25rem;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--green)}
 .vows p{margin:8px 0 0;color:var(--ink-soft);max-width:38ch}
 @media (min-width:800px){.vows{grid-template-columns:repeat(3,1fr);gap:40px}}
 
@@ -130,7 +145,7 @@ section{padding:40px 0 48px}
 .quote .wrap{display:grid;gap:28px}
 .steps{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:s}
 .steps li{counter-increment:s;display:flex;gap:12px;align-items:baseline;font-weight:700}
-.steps li::before{content:counter(s);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:.9rem;font-weight:900}
+.steps li::before{content:counter(s);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:1rem;font-weight:900}
 form{display:grid;gap:18px;background:#fff;border-radius:var(--radius);padding:20px 16px;box-shadow:0 16px 36px -22px rgba(16,48,42,.45)}
 fieldset{border:0;margin:0;padding:0}
 legend,label.lbl{display:block;font-weight:800;margin-bottom:8px}
@@ -138,35 +153,42 @@ legend,label.lbl{display:block;font-weight:800;margin-bottom:8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative}
 .chip input{position:absolute;opacity:0;width:1px;height:1px}
-.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--line);background:#fff;font-weight:700;font-size:.98rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #7a978a;background:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.chip.picked span{animation:picked .9s ease-out}
+@keyframes picked{from{box-shadow:0 0 0 0 rgba(44,124,198,.55)}to{box-shadow:0 0 0 14px rgba(44,124,198,0)}}
 .chip input:checked+span{background:var(--green);border-color:var(--green);color:#fff}
 .chip:hover span,.chip input:focus-visible+span{border-color:var(--soap)}
 .chip input:focus-visible+span{outline:3px solid var(--soap);outline-offset:2px}
-input[type=text],textarea{width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:500 16px/1.4 var(--font);transition:border-color .15s}
+input[type=text],textarea{width:100%;min-height:52px;padding:12px 14px;border:2px solid #7a978a;border-radius:12px;background:#fff;color:var(--ink);font:500 16px/1.4 var(--font);transition:border-color .15s}
 textarea{min-height:96px;resize:vertical}
 input[type=text]:hover,textarea:hover,input[type=text]:focus,textarea:focus{border-color:var(--soap);outline:none}
 input[type=text]:focus,textarea:focus{box-shadow:0 0 0 3px rgba(44,124,198,.2)}
-::placeholder{color:#6f8a81}
+::placeholder{color:#587269}
 form .btn{width:100%}
 form .btn:hover,form .btn:focus-visible{outline:3px solid var(--soap);outline-offset:3px}
-.err{margin:6px 0 0;color:#b3261e;font-weight:700;font-size:.95rem}
+.err{margin:6px 0 0;color:#b3261e;font-weight:700;font-size:1rem}
 .err[hidden]{display:none}
-.after{margin:0;font-size:.95rem;color:var(--ink-soft);text-align:center}
+.sent{display:grid;gap:10px;padding:14px;border-radius:12px;background:#eef5f1}
+.sent[hidden]{display:none}
+.sent p{margin:0;font-weight:700}
+.sent pre{margin:0;white-space:pre-wrap;font:500 16px/1.45 var(--font);color:var(--ink)}
+.after{margin:0;font-size:1rem;color:var(--ink-soft);text-align:center}
 .after a{font-weight:800;color:var(--ink)}
 @media (min-width:1024px){
   .quote .wrap{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+  .quote .wrap>div:first-child{position:sticky;top:24px}
   form{padding:32px}
 }
 
 /* ---------- close ---------- */
 .close{background:var(--deep);color:#eef6f1;padding:24px 0 64px}
 .close h2{max-width:13ch}
-.close p{margin:16px 0 0;font-size:1.1rem;color:#bcd8ca}
+.close p{margin:16px 0 0;font-size:1.25rem;color:#bcd8ca}
 .bigtel{display:inline-flex;align-items:center;gap:12px;margin-top:26px;min-height:56px;font-size:clamp(1.7rem,8vw,2.6rem);font-weight:900;text-decoration:none;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .bigtel svg{width:.8em;height:.8em;color:#7fd3a8}
 .bigtel:hover{color:#9fe3bf}
 
-footer{background:var(--deep);color:#bcd8ca;border-top:1px solid rgba(255,255,255,.12);padding:24px 0 36px;font-size:.95rem}
+footer{background:var(--deep);color:#bcd8ca;border-top:1px solid rgba(255,255,255,.12);padding:24px 0 36px;font-size:1rem}
 footer .wrap{display:grid;gap:6px}
 footer b{color:#fff}
 footer a{color:#fff;font-weight:700;text-decoration-color:rgba(255,255,255,.4);text-underline-offset:3px}
@@ -181,7 +203,7 @@ THESIS: A Philadelphia cleaner who shows up on time and leaves your place in ord
 OWN-WORLD: Window-washing day. A sunlit window glazed with soap film; a squeegee pulls clean, streak-free strips through it; soap bubbles drift and pop. Fresh-linen mint ground, their 💚 green, soap-blue for focus. Wave seams are the wet line a squeegee leaves.
 STORY: Who + promise (hero) -> what we clean (rows that open the quote) -> how we treat your home (quality, organization, punctuality) -> free quote by text -> "Your home deserves special care." + phone.
 FIRST VIEWPORT (phone): wordmark + tap-to-call number top-right; COME HOME TO CLEAN.; their line "Focus on your day..."; Get a free quote / Send us a text; the soapy window you can wipe with a finger.
-FORM: Single static file, system type, heavy uppercase display, no images to wait for; canvas window + SVG seams on one animation loop.
+FORM (no concept roll: pitch-site builds unattended, world chosen from the trade; runner-up in HANDOFF.md): Single static file, system type, heavy uppercase display, no images to wait for; canvas window + SVG seams on one animation loop.
 -->
 <header class="top">
   <div class="wrap">
@@ -194,7 +216,7 @@ FORM: Single static file, system type, heavy uppercase display, no images to wai
 <section class="hero" aria-labelledby="h1">
   <div class="wrap">
     <div>
-      <h1 id="h1">Come home to clean.</h1>
+      <h1 id="h1">Come home<br>to clean.</h1>
       <p class="promise">Focus on your day. We'll take care of the cleaning.</p>
       <div class="actions">
         <a class="btn fill" href="#quote">Get a free quote</a>
@@ -231,12 +253,12 @@ FORM: Single static file, system type, heavy uppercase display, no images to wai
 
 <section class="care" aria-labelledby="h-care">
   <div class="wrap">
-    <h2 id="h-care">Quality, organization, punctuality.</h2>
-    <p class="lead">That's our promise, and it's how we treat every home we walk into: like it belongs to someone we care about.</p>
+    <h2 id="h-care">How we treat your home.</h2>
+    <p class="lead">We are committed to quality, organization, and punctuality.</p>
     <ul class="vows">
-      <li><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.4L20 9l-4.4 3.8L17 18.5 12 15.5 7 18.5l1.4-5.7L4 9l5.8-.6z"/></svg>Quality</h3><p>We clean the places nobody checks, because you'll notice when they're done.</p></li>
-      <li><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Organization</h3><p>Your things go back where you keep them, not where we think they belong.</p></li>
-      <li><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Punctuality</h3><p>We arrive when we said we would, so your day keeps its shape.</p></li>
+      <li><h3>Quality</h3><p>We clean the places nobody checks, because you'll notice when they're done.</p></li>
+      <li><h3>Organization</h3><p>Your things go back where you keep them, not where we think they belong.</p></li>
+      <li><h3>Punctuality</h3><p>We arrive when we said we would, so your day keeps its shape.</p></li>
     </ul>
   </div>
 </section>
@@ -248,7 +270,7 @@ FORM: Single static file, system type, heavy uppercase display, no images to wai
       <h2 id="h-quote">Get a free quote</h2>
       <ol class="steps">
         <li>Tell us what needs cleaning.</li>
-        <li>It goes to us as a text from your phone.</li>
+        <li>It opens as a text on your phone. Just hit send.</li>
         <li>We text or call you back with your quote.</li>
       </ol>
     </div>
@@ -264,15 +286,15 @@ FORM: Single static file, system type, heavy uppercase display, no images to wai
           <label class="chip"><input type="checkbox" name="svc" value="Post-construction"><span>Post-construction</span></label>
           <label class="chip"><input type="checkbox" name="svc" value="Sofa / upholstery"><span>Sofa &amp; upholstery</span></label>
         </div>
-        <p class="err" id="errSvc" hidden>Pick at least one so we know what to quote.</p>
+        <p class="err" id="errSvc" role="alert" hidden>Pick at least one so we know what to quote.</p>
       </fieldset>
       <div>
         <label class="lbl" for="fName">Your name</label>
-        <input type="text" id="fName" autocomplete="name" placeholder="First name is fine">
-        <p class="err" id="errName" hidden>Add your name so we know who's texting.</p>
+        <input type="text" id="fName" autocomplete="name" aria-describedby="errName" placeholder="First name is fine">
+        <p class="err" id="errName" role="alert" hidden>Add your name so we know who's texting.</p>
       </div>
       <div>
-        <label class="lbl" for="fWhere">Neighborhood or town</label>
+        <label class="lbl" for="fWhere">Neighborhood or town <span class="opt">(optional)</span></label>
         <input type="text" id="fWhere" autocomplete="address-level2" placeholder="e.g. Fishtown, Cherry Hill">
       </div>
       <div>
@@ -288,7 +310,12 @@ FORM: Single static file, system type, heavy uppercase display, no images to wai
         <textarea id="fNotes" placeholder="Pets, parking, the room that needs the most love…"></textarea>
       </div>
       <button class="btn fill" type="submit">Text my quote request</button>
-      <p class="after">Opens your messages with this written for you. Rather talk? <a href="tel:+12672557148">Call (267) 255-7148</a></p>
+      <div class="sent" id="sent" hidden>
+        <p>Messages didn't open? Copy this and text it to <a href="tel:+12672557148">(267) 255-7148</a>, or call.</p>
+        <pre id="msg"></pre>
+        <button type="button" class="btn line" id="copy">Copy message</button>
+      </div>
+      <p class="after">Opens your messages with this written for you.</p>
     </form>
   </div>
 </section>
@@ -343,6 +370,7 @@ var LOOP = (function(){
   var view = document.getElementById('view'), wipe = document.getElementById('wipe');
   var vctx = view.getContext('2d'), ctx = wipe.getContext('2d');
   var hint = document.getElementById('hint');
+  if (window.matchMedia && matchMedia('(hover:hover)').matches) hint.textContent = 'Move across the glass';
   var W = 0, H = 0, dpr = 1;
   var mask = document.createElement('canvas'), mctx = mask.getContext('2d');   // film alpha, half res
   var tex = document.createElement('canvas'), tctx = tex.getContext('2d');      // soapy film texture
@@ -388,28 +416,36 @@ var LOOP = (function(){
       x += w;
     }
     c.restore();
-    // out-of-focus leaves in the corners
-    c.save(); try{ c.filter = 'blur(' + Math.round(Math.max(6, W/40)) + 'px)'; }catch(e){}
-    var leaves = [[0,0,'#3f8a5a'],[W*.12,H*.04,'#5aa36d'],[W,H*.05,'#2f7a4d'],[W*.9,-H*.05,'#4f9a62']];
+    // out-of-focus leaves in the corners: soft gradient blobs (no ctx.filter needed)
+    var leaves = [[0,0,'63,138,90'],[W*.12,H*.04,'90,163,109'],[W,H*.05,'47,122,77'],[W*.9,-H*.05,'79,154,98']];
     for (var i=0;i<leaves.length;i++){
-      var L = leaves[i]; c.fillStyle = L[2]; c.globalAlpha = .85;
-      for (var k=0;k<7;k++){ c.beginPath(); c.ellipse(L[0]+rnd(-W*.1,W*.1), L[1]+rnd(-H*.1,H*.14), rnd(W*.04,W*.09), rnd(H*.04,H*.08), rnd(0,3), 0, 6.3); c.fill(); }
+      var L = leaves[i];
+      for (var k=0;k<7;k++){
+        var lx = L[0]+rnd(-W*.1,W*.1), ly = L[1]+rnd(-H*.1,H*.14), lr = rnd(W*.05,W*.11);
+        var lg = c.createRadialGradient(lx,ly,0,lx,ly,lr);
+        lg.addColorStop(0,'rgba('+L[2]+',.85)'); lg.addColorStop(.55,'rgba('+L[2]+',.6)'); lg.addColorStop(1,'rgba('+L[2]+',0)');
+        c.fillStyle = lg; c.beginPath(); c.arc(lx,ly,lr,0,6.3); c.fill();
+      }
     }
-    c.restore();
   }
 
   /* soap film: milky haze, circular wash swirls, a few drips, specks of suds */
   function paintTexture(){
     tex.width = W; tex.height = H; var c = tctx;
-    c.fillStyle = 'rgba(232,240,238,.86)'; c.fillRect(0,0,W,H);
+    c.fillStyle = 'rgba(232,240,238,.9)'; c.fillRect(0,0,W,H);
     c.lineCap = 'round';
-    var n = Math.round(W*H/3600);
+    c.save(); try{ c.filter = 'blur(3px)'; }catch(e){}
+    var n = Math.round(W*H/9000);
     for (var i=0;i<n;i++){
-      var x = rnd(0,W), y = rnd(0,H), r = rnd(14,48), a0 = rnd(0,6.3);
-      c.strokeStyle = Math.random() < .6 ? 'rgba(255,255,255,'+rnd(.2,.45)+')' : 'rgba(170,190,186,'+rnd(.1,.22)+')';
-      c.lineWidth = rnd(3,10);
-      c.beginPath(); c.arc(x,y,r,a0,a0+rnd(1.6,4.4)); c.stroke();
+      var x = rnd(0,W), y = rnd(0,H), r = rnd(30,90), a0 = rnd(0,6.3), white = Math.random() < .65;
+      for (var ring=0; ring<3; ring++){       // a scrubber spiral: a few jittered passes, each a bit tighter
+        var rr2 = r*(1-ring*.2), sweep = rnd(1.8,4.2);
+        c.strokeStyle = white ? 'rgba(255,255,255,'+rnd(.10,.25)+')' : 'rgba(160,182,178,'+rnd(.06,.12)+')';
+        c.lineWidth = rnd(12,28)*(1-ring*.25);
+        c.beginPath(); c.arc(x+rnd(-6,6), y+rnd(-6,6), rr2, a0+ring*.7, a0+ring*.7+sweep); c.stroke();
+      }
     }
+    c.restore();
     for (i=0;i<Math.round(W/22);i++){
       var dx = rnd(0,W), dy = rnd(0,H*.6), len = rnd(H*.08,H*.3);
       var gr = c.createLinearGradient(0,dy,0,dy+len);
@@ -482,7 +518,6 @@ var LOOP = (function(){
       if (e < R && e > .01){ var f = (1-e/R)*2.2; b.vx += ex/e*f + dx*.08; b.vyp += ey/e*f + dy*.08; }
     }
     blade.px = blade.x; blade.py = blade.y; blade.x = x; blade.y = y;
-    dirty = true;
   }
 
   /* the auto-squeegee: S-strokes left-right, stepping down, like a real window cleaner */
@@ -522,10 +557,10 @@ var LOOP = (function(){
     blade.user = true; ghost.hold(performance.now());
     var p = toLocal(cx,cy); blade.x = p[0]; blade.y = p[1]; blade.on = true; blade.shown = true; pointer = [cx,cy];
     hint.classList.add('gone');
-    if (reduceMotion) { dirty = true; render(); }
+    if (reduceMotion) { render(); }
   }
   function move(cx,cy){ if (!pointer) return; pointer = [cx,cy]; ghost.hold(performance.now()); if (reduceMotion){ var p = toLocal(cx,cy); moveBlade(p[0],p[1]); render(); } }
-  function end(){ pointer = null; blade.user = false; blade.on = false; blade.shown = false; ghost.hold(performance.now()); dirty = true; if (reduceMotion) render(); }
+  function end(){ pointer = null; blade.user = false; blade.on = false; blade.shown = false; ghost.hold(performance.now()); if (reduceMotion) render(); }
 
   wipe.addEventListener('pointerdown', function(e){ if (e.pointerType === 'touch') return; e.preventDefault(); begin(e.clientX,e.clientY); });
   window.addEventListener('pointermove', function(e){ if (e.pointerType === 'touch') return;
@@ -542,7 +577,7 @@ var LOOP = (function(){
   wipe.addEventListener('touchcancel', end, {passive:true});
 
   /* draw */
-  var dirty = true, frameN = 0;
+  var frameN = 0;
   function rr(c,x,y,w,h,r){ c.beginPath(); if (c.roundRect) c.roundRect(x,y,w,h,r); else c.rect(x,y,w,h); c.fill(); }
   function drawSqueegee(c){
     var h = bladeLen()/2;
@@ -614,8 +649,13 @@ var LOOP = (function(){
     }
     return d;
   }
-  function draw(t){
+  var onScreen = seams.map(function(){ return true; });
+  if ('IntersectionObserver' in window) seams.forEach(function(s,i){
+    new IntersectionObserver(function(es){ onScreen[i] = es[0].isIntersecting; }).observe(s);
+  });
+  function draw(t, all){
     for (var i=0;i<seams.length;i++){
+      if (!all && !onScreen[i]) continue;
       var s = seams[i], p = s.children, ph = i*1.3;
       var mid = line(t, 0, 10, ph);
       p[0].setAttribute('d', mid + 'L1200 80L0 80Z');
@@ -623,7 +663,7 @@ var LOOP = (function(){
       p[2].setAttribute('d', mid);
     }
   }
-  draw(0);
+  draw(0, true);
   LOOP.add(function(now){ draw(now/1000); });
 })();
 
@@ -634,9 +674,14 @@ var LOOP = (function(){
   [].forEach.call(document.querySelectorAll('.row[data-service]'), function(a){
     a.addEventListener('click', function(){
       var v = a.getAttribute('data-service');
-      chips.forEach(function(c){ if (c.value === v) c.checked = true; });
+      chips.forEach(function(c){ if (c.value === v){ c.checked = true; var l = c.parentNode; l.classList.remove('picked'); setTimeout(function(){ l.classList.add('picked'); }, 450); setTimeout(function(){ l.classList.remove('picked'); }, 1400); } });
       document.getElementById('errSvc').hidden = true;
     });
+  });
+  document.getElementById('copy').addEventListener('click', function(){
+    var b = this, t = document.getElementById('msg').textContent;
+    try { navigator.clipboard.writeText(t).then(function(){ b.textContent = 'Copied'; }, function(){ b.textContent = 'Select the text above to copy'; }); }
+    catch(err){ b.textContent = 'Select the text above to copy'; }
   });
   chips.forEach(function(c){ c.addEventListener('change', function(){ document.getElementById('errSvc').hidden = true; }); });
   form.addEventListener('submit', function(e){
@@ -645,6 +690,7 @@ var LOOP = (function(){
     var name = document.getElementById('fName').value.trim();
     var errS = document.getElementById('errSvc'), errN = document.getElementById('errName');
     errS.hidden = svc.length > 0; errN.hidden = !!name;
+    document.getElementById('fName').setAttribute('aria-invalid', name ? 'false' : 'true');
     if (!svc.length){ chips[0].focus(); return; }
     if (!name){ document.getElementById('fName').focus(); return; }
     var lines = ['Hi Ana Begali Cleaning! I\'d like a free quote.', 'Name: ' + name, 'Cleaning: ' + svc.join(', ')];
@@ -652,7 +698,10 @@ var LOOP = (function(){
     var size = document.getElementById('fSize').value.trim(); if (size) lines.push('Size: ' + size);
     var when = document.getElementById('fWhen').value.trim(); if (when) lines.push('When: ' + when);
     var notes = document.getElementById('fNotes').value.trim(); if (notes) lines.push('Notes: ' + notes);
-    window.location.href = 'sms:+12672557148?&body=' + encodeURIComponent(lines.join('\n'));
+    var text = lines.join('\n');
+    document.getElementById('msg').textContent = text;
+    window.location.href = 'sms:+12672557148?&body=' + encodeURIComponent(text);
+    setTimeout(function(){ document.getElementById('sent').hidden = false; }, 600);
   });
 })();
 
