@@ -41,8 +41,10 @@ h1,h2,h3{margin:0;line-height:1.02;text-wrap:balance}
 h2{font-size:clamp(2rem,8vw,3.4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 16px}
 @media (min-width:700px){.wrap{padding:0 32px}}
-.wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
-@media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left));padding-right:max(32px,env(safe-area-inset-right))}}
+@supports (padding:max(0px)){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  @media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left));padding-right:max(32px,env(safe-area-inset-right))}}
+}
 
 /* ---------- header ---------- */
 .top{background:var(--hero)}
